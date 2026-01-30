@@ -27,7 +27,8 @@ echo "============================================"
 echo -e "${NC}"
 
 # --- Configuration ---
-TAILSCALE_HOST="${TAILSCALE_HOST:-}"
+# Accept as: first argument, or env var, or interactive prompt
+TAILSCALE_HOST="${1:-${TAILSCALE_HOST:-}}"
 TTS_PORT="${TTS_PORT:-8880}"
 STT_PORT="${STT_PORT:-2022}"
 VOICEMODE_VOICE="${VOICEMODE_VOICE:-af_sky}"

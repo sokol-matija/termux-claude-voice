@@ -28,17 +28,16 @@ Android Phone (Termux)                  Remote Server (Tailscale)
 ## Install
 
 ```bash
-# Option 1: One-liner
-curl -fsSL https://raw.githubusercontent.com/MatijaSokol/termux-claude-voice/main/install.sh | bash
+# Option 1: One-liner (will prompt for hostname)
+curl -fsSL https://raw.githubusercontent.com/sokol-matija/termux-claude-voice/main/install.sh | bash
 
-# Option 2: With pre-set config
-TAILSCALE_HOST=sokol.falcon-parore.ts.net \
-  curl -fsSL https://raw.githubusercontent.com/MatijaSokol/termux-claude-voice/main/install.sh | bash
+# Option 2: Pass hostname as argument via bash -s
+curl -fsSL https://raw.githubusercontent.com/sokol-matija/termux-claude-voice/main/install.sh | bash -s sokol.falcon-parore.ts.net
 
 # Option 3: Clone and run
-git clone https://github.com/MatijaSokol/termux-claude-voice.git
+git clone https://github.com/sokol-matija/termux-claude-voice.git
 cd termux-claude-voice
-bash install.sh
+bash install.sh sokol.falcon-parore.ts.net
 ```
 
 ## Usage
