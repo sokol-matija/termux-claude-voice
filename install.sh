@@ -17,7 +17,7 @@ err()   { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 
 # --- Preflight ---
 if [ ! -d "/data/data/com.termux" ]; then
-  err "This script must be run inside Termux on Android."
+  warn "Not running inside Termux. Some packages may differ."
 fi
 
 echo -e "${CYAN}"
@@ -34,12 +34,13 @@ STT_PORT="${STT_PORT:-2022}"
 VOICEMODE_VOICE="${VOICEMODE_VOICE:-af_sky}"
 
 if [ -z "$TAILSCALE_HOST" ]; then
-  echo ""
-  read -p "Enter your Tailscale hostname (e.g., sokol.falcon-parore.ts.net): " TAILSCALE_HOST < /dev/tty
+  # Try interactive prompt, fall back to placeholder
+  read -p "Enter your Tailscale hostname (e.g., sokol.falcon-parore.ts.net): " TAILSCALE_HOST < /dev/tty 2>/dev/null || true
 fi
 
 if [ -z "$TAILSCALE_HOST" ]; then
-  err "Tailscale hostname is required. Set TAILSCALE_HOST env var or enter it when prompted."
+  TAILSCALE_HOST="YOUR_TAILSCALE_HOST"
+  warn "No Tailscale host set. Using placeholder — edit ~/.claude/settings.json and ~/.voicemode/voicemode.env later."
 fi
 
 info "Tailscale host: $TAILSCALE_HOST"
