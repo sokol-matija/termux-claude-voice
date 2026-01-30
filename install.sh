@@ -34,7 +34,7 @@ VOICEMODE_VOICE="${VOICEMODE_VOICE:-af_sky}"
 
 if [ -z "$TAILSCALE_HOST" ]; then
   echo ""
-  read -p "Enter your Tailscale hostname (e.g., sokol.falcon-parore.ts.net): " TAILSCALE_HOST
+  read -p "Enter your Tailscale hostname (e.g., sokol.falcon-parore.ts.net): " TAILSCALE_HOST < /dev/tty
 fi
 
 if [ -z "$TAILSCALE_HOST" ]; then
