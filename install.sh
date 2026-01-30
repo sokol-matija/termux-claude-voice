@@ -50,12 +50,14 @@ info "Voice: $VOICEMODE_VOICE"
 echo ""
 
 # --- Step 1: Update and install system packages ---
+export DEBIAN_FRONTEND=noninteractive
+
 info "Updating Termux packages..."
-pkg update -y && pkg upgrade -y
+apt-get update -y && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 ok "Packages updated"
 
 info "Installing system dependencies..."
-pkg install -y \
+apt-get install -y -o Dpkg::Options::="--force-confold" \
   nodejs \
   python \
   python-pip \
